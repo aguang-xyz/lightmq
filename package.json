@@ -1,0 +1,24 @@
+{
+  "name": "light-mq",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "debug": "STORE=./store.tmp DEBUG=true babel-node ./src/main.js",
+    "test": "jest"
+  },
+  "author": "Guangrui Wang",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "sqlite3": "^4.2.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.1",
+    "@babel/node": "^7.10.1",
+    "@babel/preset-env": "^7.10.1",
+    "babel-jest": "^26.0.1",
+    "jest": "^26.0.1"
+  }
+}
