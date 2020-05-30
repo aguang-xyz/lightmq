@@ -1,2 +1,2 @@
 # light-mq
-A lightweight HTTP-Based Message Queue.
+A lightweight HTTP-based Message Queue.
