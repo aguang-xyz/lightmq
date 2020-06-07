@@ -7,14 +7,17 @@ An embeddable lightweight MQ implementation based on HTTP protocol.
 ### Integrate with Express.
 
 ```javascript
-import MQServer from 'light-mq/libs/server';
+import LightMQ from 'light-mq/libs/server';
 import Express from 'express';
 
-const app = Express();
+LightMQ.create().then((lightMQ) => {
 
-app.use('/light-mq', MQServer.create());
+  const app = Express();
+  
+  app.use('/light-mq', lightMQ);
 
-app.listen(8080);
+  app.listen(args.port);
+});
 ```
 
 ### Docker.
@@ -24,4 +27,14 @@ docker pull lightmq/lightmq
 docker run -it -p 8080:8080 lightmq
 ```
 
+### Command line.
+
+```bash
+npm install lightmq -g
+
+lightmq
+```
+
 ## Client.
+
+Comming soon.
