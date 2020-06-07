@@ -23,7 +23,9 @@ jobs:
           npm run build
 
       - name: Publish to NPM.
-        run: npm publish --access public
         env:
           # Config for secret: NPM_AUTH_TOKEN is required.
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        run: |
+          npm config set '//registry.npmjs.org/:_authToken' "${NPM_AUTH_TOKEN}"
+          npm publish --access public
