@@ -17,6 +17,10 @@ jobs:
         with:
           node-version: 10.0.0
 
+      - name: Run tests.
+        run: |
+          npm run test
+
       - name: Build dist.
         run: |
           npm install
