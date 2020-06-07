@@ -91,8 +91,6 @@ test(
 
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
-    console.log(results);
-
     expect(results.length).toBe(10);
 
     cancel();
