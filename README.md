@@ -1,5 +1,6 @@
 # LightMQ
 
+![npm (scoped)](https://img.shields.io/npm/v/@aguang/lightmq)
 ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/lightmq/lightmq)
 ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/lightmq/lightmq)
 
