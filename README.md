@@ -52,7 +52,8 @@ lightMQ.create().then((lightMQ) => {
   // Get configs.
   lightMQ.config.get('topic-name').then(config => {
   
-    // Speed limit of a given topic, default: 1000 (transactions per second).
+    // Speed limit of a given topic, default: 1000
+    // (transactions per second).
     console.log(config['speed-limit']);
     
     // Retry interval, default: 60000 (seconds).
@@ -77,23 +78,25 @@ lightMQ.create().then((lightMQ) => {
     success: true,
     device: 'ios',
   };
-  lightMQ.message.publish('topic-name', message_id, payload).then(() => {
+  lightMQ.message.publish('topic-name', message_id, payload)
+    .then(() => {
     
-    console.log('Publish success.');
-  });
+      console.log('Publish success.');
+    });
   
   
   // Subscribe messages.
-  const cancel = lightMQ.message.subscribe('topic-name', (message_id, payload) => {
+  const cancel = lightMQ.message.subscribe('topic-name',
+  	(message_id, payload) => {
     
-    console.log(message_id, payload);
-    
-    // If there is any asychronized processing, make sure it should be wrapped
-    // into a Promised object to be returned; Or you can pass-in a async function
-    // directly.
-    
-    return somePromisedOperation(payload);
-  });
+      console.log(message_id, payload);
+
+      // If there is any asychronized processing, make sure it
+    	// should be wrapped into a Promised object to be returned;
+    	// Or you can pass-in a async function directly.
+
+      return somePromisedOperation(payload);
+    });
   
   // Stop subscribing 10 seconds later.
   setTimeout(cancel, 10000);
