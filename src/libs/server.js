@@ -7,17 +7,26 @@ import configRouter from '../routers/config-router';
 import messageRouter from '../routers/message-router';
 
 const Server = {
-  create: ({ store }) =>
+  create: ({ store, log } = {}) =>
     StoreService.init(store)
       .then(() => ConfigService.init())
       .then(() => MessageService.init())
       .then(() => {
         const app = new Express();
 
-        app.use(Morgan('tiny'));
+        if (log) {
+          app.use(Morgan('tiny'));
+        }
 
         app.use('/config', configRouter);
         app.use('/message', messageRouter);
+
+        let _listen = app.listen.bind(app);
+
+        app.listen = (...args) =>
+          new Promise((resolve) => {
+            let server = _listen(...args, () => resolve(server));
+          });
 
         return app;
       }),
