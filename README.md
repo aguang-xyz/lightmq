@@ -1,5 +1,8 @@
 # LightMQ
 
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/lightmq/lightmq)
+![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/lightmq/lightmq)
+
 An embeddable lightweight MQ implementation based on HTTP protocol.
 
 ## Deploy server.
