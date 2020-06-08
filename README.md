@@ -34,7 +34,7 @@ docker run -it -p 8080:8080 lightmq
 ### Command line.
 
 ```bash
-npm install lightmq -g
+npm install @aguang/lightmq -g
 
 lightmq
 ```
@@ -48,7 +48,6 @@ import LightMQ from 'light-mq/libs/client';
 
 lightMQ.create().then((lightMQ) => {
   
-  
   // Get configs.
   lightMQ.config.get('topic-name').then(config => {
   
@@ -60,7 +59,6 @@ lightMQ.create().then((lightMQ) => {
     console.log(config['retry-interval']);
   });
   
-  
   // Set configs.
   lightMQ.config.set('topic-name', {
     'speed-limit': 100,   // 100 (transactions per second).
@@ -69,7 +67,6 @@ lightMQ.create().then((lightMQ) => {
     
     console.log('Set config success.');
   });
-  
   
   // Publish messages.
   const message_id = 'user-login-message-1';
@@ -83,7 +80,6 @@ lightMQ.create().then((lightMQ) => {
     
       console.log('Publish success.');
     });
-  
   
   // Subscribe messages.
   const cancel = lightMQ.message.subscribe('topic-name',
@@ -111,20 +107,17 @@ curl --header "Content-Type: application/json" \
      --request GET \
        http://127.0.0.1:8080/config/topic-name
 
-
 # Set configs.
 curl --header "Content-Type: application/json" \
      --request POST \
      --data '{"speed-limit": 1}' \
        http://127.0.0.1:8080/config/topic-name
 
-
 # Publish messages.
 curl --header "Content-Type: application/json" \
      --request POST \
      --data '{"userid": "1", "success": true, "device": "ios"}' \
        http://127.0.0.1:8080/message/topic-name/message_id 
-
 
 # Subscribe for messages, it is a blocking query until there
 # is a message available and it meets the spped limit of the

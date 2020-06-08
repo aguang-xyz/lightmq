@@ -1,6 +1,6 @@
 {
   "name": "@aguang/lightmq",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A lightweight MQ implementation based on HTTP protocol.",
   "repository": "https://github.com/aguang-xyz/lightmq",
   "scripts": {
@@ -18,6 +18,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
+    "regenerator-runtime": "^0.13.5",
     "sqlite3": "^4.2.0"
   },
   "devDependencies": {
