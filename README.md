@@ -1,6 +1,7 @@
 # LightMQ
 
 [![npm (scoped)](https://img.shields.io/npm/v/@aguang/lightmq)](https://www.npmjs.com/package/@aguang/lightmq)
+[![npm](https://img.shields.io/npm/dm/@aguang/lightmq)](https://www.npmjs.com/package/@aguang/lightmq)
 [![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/lightmq/lightmq)](https://hub.docker.com/r/lightmq/lightmq/builds)
 [![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/lightmq/lightmq)](https://hub.docker.com/r/lightmq/lightmq)
 
