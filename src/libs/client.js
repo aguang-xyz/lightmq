@@ -1,9 +1,12 @@
 import Axios from 'axios';
 
 const Client = {
-  create: (endpoint = 'http://localhost:8080/') => {
+  create: ({ baseURL, socketPath }) => {
+    baseURL = baseURL || (socketPath ? 'http:' : 'http://127.0.0.1:8080/');
+
     const client = Axios.create({
-      baseURL: endpoint,
+      baseURL,
+      socketPath,
       validateStatus: (status) => status == 200,
     });
 

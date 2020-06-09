@@ -2,20 +2,40 @@ import Axios from 'axios';
 import Server from '../../src/libs/server';
 import Client from '../../src/libs/client';
 
-const runTest = (test) => async () => {
+const runTestHttp = (test) => async () => {
   const lightMQ = await Server.create();
   const httpServer = await lightMQ.listen();
 
   const port = httpServer.address().port;
-  const endpoint = `http://127.0.0.1:${port}`;
+  const baseURL = `http://127.0.0.1:${port}/`;
 
-  const client = Client.create(endpoint);
+  const client = Client.create({ baseURL });
 
   try {
     await test(client);
   } finally {
     httpServer.close();
   }
+};
+
+const runTestUnixSocket = (test) => async () => {
+  const socketPath = '/tmp/lightmq.sock';
+
+  const lightMQ = await Server.create();
+  const httpServer = await lightMQ.listen(socketPath);
+
+  const client = Client.create({ socketPath });
+
+  try {
+    await test(client);
+  } finally {
+    httpServer.close();
+  }
+};
+
+const runTest = (test) => async () => {
+  await runTestHttp(test);
+  await runTestUnixSocket(test);
 };
 
 test(

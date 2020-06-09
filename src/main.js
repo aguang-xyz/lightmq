@@ -9,8 +9,13 @@ const options = [
     name: 'port',
     alias: 'p',
     type: Number,
-    description: 'HTTP port',
+    description: 'HTTP port.',
     defaultValue: 8080,
+  },
+  {
+    name: 'unix-socket',
+    type: String,
+    description: 'Unix socket path.',
   },
   {
     name: 'store',
@@ -58,10 +63,16 @@ if (args.help) {
     store: args.store,
     log: args.log,
   })
-    .then((app) => app.listen(args.port))
-    .then((server) =>
+    .then((app) => app.listen(args['unix-socket'] || args.port))
+    .then((server) => {
+      if (args['unix-socket']) {
+        console.log(`LightMQ started at sock:${args['unix-socket']}`);
+      } else {
+        console.log(`LightMQ started at http://localhost:${args.port}/`);
+      }
+
       process.on('SIGINT', () => {
         server.close(() => process.exit(0));
-      }),
-    );
+      });
+    });
 }
